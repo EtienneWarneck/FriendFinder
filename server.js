@@ -3,15 +3,14 @@
 var express = require("express");
 var path = require("path");
 var bodyparser = require('body-parser');
-
-
+var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();// app is a requesthandler
 var PORT = 3000;
 
 // Expose the public directory to access CSS files
-app.use(express.static(path.join(__dirname, './','app', 'public', 'css'))); 
+app.use(express.static(path.join(__dirname, 'app', 'public'))); 
 //static is a middleware to serve static files such as images, CSS files, and JavaScript files.
 
 //importing 
@@ -23,12 +22,12 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.use( '/htmlRoutes', htmlRoutes); //add path as a filter
+app.use( htmlRoutes); //add path as a filter
 // app.use('/filter02/apiRoutes', apiRoutes);
 
-// app.use((req, res, next) => {
-//   res.status(404).send('<h1>404 Page not found</h1>');
-// });
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname,'.','app','public', '404.html'));
+});
 
 //create server and listen to it on PORT
 app.listen(PORT, function () {

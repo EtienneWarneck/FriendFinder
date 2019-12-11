@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require("path");
 const router = express.Router();
 
 // A GET route used to display a JSON of all possible friends.

@@ -1,41 +1,60 @@
 * {
     font-family: 'Raleway', sans-serif;
-    text-align: center;
 }
 
-
-header {
-    height: 2.5rem;
-}
-
-.navbar {
-    background-color: #9ed9f0;
-    border-bottom: 2px solid rgb(63, 64, 78);
-}
-
-.navbar-brand {
-    color: rgb(29, 104, 243);
-}
-
-main {
-    width: 100%;
+.main {
+    height: 100%;
     margin: 0;
-    text-align: center;
+}
+
+h1 {
+    margin: 100px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
 }
 
 h3 {
-    margin: 0px;
-    padding-top: 100px;
+    padding-top: 30px;
+    color: rgb(18, 120, 189);
 }
 
-p {
-    margin: 30px;
+h4 {
+    color: rgb(69, 126, 163);
 }
 
-.btn, .btn-lg {
+h5 {
+    color: rgb(6, 37, 58);
+}
+
+#name {
+    margin-top: 5px;
+    background: rgb(240, 245, 248);
+    position: relative;
+    width: 400px;
+    top: 50%;
+    border: 1px solid rgb(112, 125, 180);
+}
+
+.input-field {
+    margin-bottom: 40px;
+}
+
+.button {
+    width: 100%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.btn {
     color: rgb(42, 71, 236);
     background-color: rgb(83, 154, 235);
     border-color: rgb(24, 12, 139);
+    width: 300px;
+    margin: auto;
+    margin-top: auto;
+    color: white;
+    margin-bottom: 100px;
+    justify-content: center;
 }
 
 .button :hover {
@@ -44,14 +63,7 @@ p {
     text-decoration: none;
 }
 
-a {
-    color: white;
-    text-decoration: none!important;
-}
-
-
 .footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -59,4 +71,14 @@ a {
     background-color: #5bbbe0;
     color: white;
     text-align: center;
+    border-top: 2px solid rgb(65, 78, 63);
+}
+
+label {
+    margin-right: 30px;
+    color: rgb(18, 120, 189)
+}
+
+#inlineRadio {
+    width: 10px;
 }
