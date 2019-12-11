@@ -1,27 +1,34 @@
 // Dependencies
 // =============================================================
 var express = require("express");
-// var path = require("path");
+var path = require("path");
 var bodyparser = require('body-parser');
+
 
 // Sets up the Express App
 // =============================================================
 var app = express();// app is a requesthandler
+var PORT = 3000;
 
-var PORT = process.env.PORT || 3000;
+// Expose the public directory to access CSS files
+app.use(express.static(path.join(__dirname, './','app', 'public', 'css'))); 
+//static is a middleware to serve static files such as images, CSS files, and JavaScript files.
+
 //importing 
 const htmlRoutes = require('./app/routing/htmlRoutes'); 
-const apiRoutes = require('./app/routing/apiRoutes');
+// const apiRoutes = require('./app/routing/apiRoutes');
 
 //A built-in middleware function. It parses incoming requests
-app.use(bodyparser.urlencoded({ extended: false })); 
+app.use(bodyparser.urlencoded({ extended: true })); 
+app.use(express.json());
 
-app.use('/htmlRoutes', htmlRoutes); //add path as a filter
-app.use('/apiRoutes);
 
-app.use((req, res, next) => {
-  res.status(404).send('<h1>404 Page not found</h1>');
-});
+app.use( '/htmlRoutes', htmlRoutes); //add path as a filter
+// app.use('/filter02/apiRoutes', apiRoutes);
+
+// app.use((req, res, next) => {
+//   res.status(404).send('<h1>404 Page not found</h1>');
+// });
 
 //create server and listen to it on PORT
 app.listen(PORT, function () {
