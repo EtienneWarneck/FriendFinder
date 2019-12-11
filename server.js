@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'app', 'public')));
 
 //importing 
 const htmlRoutes = require('./app/routing/htmlRoutes'); 
-// const apiRoutes = require('./app/routing/apiRoutes');
+const apiRoutes = require('./app/routing/apiRoutes');
 
 //A built-in middleware function. It parses incoming requests
 app.use(bodyparser.urlencoded({ extended: true })); 
@@ -23,11 +23,13 @@ app.use(express.json());
 
 
 app.use( htmlRoutes); //add path as a filter
-// app.use('/filter02/apiRoutes', apiRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname,'.','app','public', '404.html'));
+  res.status(404).sendFile(path.join(__dirname,'public', '404.html'));
 });
+
+app.use( apiRoutes);
+console.log(apiRoutes, 'APIROUTES');
 
 //create server and listen to it on PORT
 app.listen(PORT, function () {
