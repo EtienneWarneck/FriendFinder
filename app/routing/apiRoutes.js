@@ -1,80 +1,26 @@
-// const express = require('express');
-// const path = require("path");
-// const router = express.Router();
+const express = require('express');
+const path = require("path");
+const router = express.Router();
+
+// Import the array fo friends
+var friends = require('../data/friends.js');
 
 // // A GET route used to display a JSON of all possible friends.
-// router.get("/api/friends", function (req, res, next) {
-//     res.json(friends);
-//     consolelog(friends)
-// });
+router.get("/api/friends", function (req, res, next) {
+    console.log("friends get")
+    var userInput = req.body;
+});
 
 // A POST route to handle incoming survey results. 
 // This route will also be used to handle the compatibility logic.
-// router.post("/api/friends", function (req, res) {
-//     return res.json(friends);
 
-// });
-
-
-// module.exports = router;
-
-// Pull in required dependencies
-var path = require('path');
-
-// Import the list of friend entries
-var friends = require('../data/friends.js');
-
-// Export API routes
-module.exports = function (app) {
-    // console.log('___ENTER apiRoutes.js___');
-
-    // Total list of friend entries
-    app.get('/api/friends', function (req, res) {
+// Add new friend entry
+router.post('/api/friends', function (req, res) {
+    console.log("friends post")
+    friends.push(req.body);
         res.json(friends);
-        console.log(friends, 'FRIENDS');
+    console.log(req.body);
+
     });
 
-    // Add new friend entry
-    app.post('/api/friends', function (req, res) {
-        // Capture the user input object
-        var userInput = req.body;
-        console.log('userInput = ' + JSON.stringify(userInput));
-
-        var userResponses = userInput.scores;
-        // console.log('userResponses = ' + userResponses);
-
-        // Compute best friend match
-        var matchName = '';
-        var matchImage = '';
-        var totalDifference = 10000; // Make the initial value big for comparison
-
-        // Examine all existing friends in the list
-        for (var i = 0; i < friends.length; i++) {
-            console.log('friend = ' + JSON.stringify(friends[i]));
-
-            // Compute differenes for each question
-            var diff = 0;
-            for (var j = 0; j < userResponses.length; j++) {
-                diff += Math.abs(friends[i].scores[j] - userResponses[j]);
-            }
-            // console.log('diff = ' + diff);
-
-            // If lowest difference, record the friend match
-            if (diff < totalDifference) {
-                // console.log('Closest match found = ' + diff);
-                // console.log('Friend name = ' + friends[i].name);
-                // console.log('Friend image = ' + friends[i].photo);
-
-                totalDifference = diff;
-                matchName = friends[i].name;
-                matchImage = friends[i].photo;
-            }
-        }
-
-        // Add new user
-        friends.push(userInput);
-
-        // Send appropriate response
-        res.json({ status: 'OK', matchName: matchName, matchImage: matchImage });
-    });
-};
+module.exports = router;

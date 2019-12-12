@@ -1,7 +1,7 @@
 var friendsArray = [
     {
         "name": "Woodie",
-        "photo": "",
+        "photo": "app/public/pokemon.png",
         "scores": [
             5,
             1,

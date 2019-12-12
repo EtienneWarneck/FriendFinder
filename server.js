@@ -3,35 +3,33 @@
 var express = require("express");
 var path = require("path");
 var bodyparser = require('body-parser');
-var path = require("path");
+
+
 // Sets up the Express App
 // =============================================================
 var app = express();// app is a requesthandler
 var PORT = 3000;
 
-// Expose the public directory to access CSS files
+// Access CSS files
 app.use(express.static(path.join(__dirname, 'app', 'public'))); 
 //static is a middleware to serve static files such as images, CSS files, and JavaScript files.
 
 //importing 
-const htmlRoutes = require('./app/routing/htmlRoutes'); 
-const apiRoutes = require('./app/routing/apiRoutes');
+const htmlRoutes = require('./app/routing/htmlRoutes');  //html
+const apiRoutes = require('./app/routing/apiRoutes');  //data
 
-//A built-in middleware function. It parses incoming requests
+//app.use() is a middleware function
+
 app.use(bodyparser.urlencoded({ extended: true })); 
 app.use(express.json());
 
+//app.METHOD(PATH, HANDLER).The use()METHOD is a function that allows to add a middleware function.
+//The PATH for which the middleware function is invoked, act as a filter)
+//The HANDLER(function executed when the route is matched))
+app.use('/', htmlRoutes); 
 
-app.use( htmlRoutes); //add path as a filter
+app.use('/apiRoutes', apiRoutes); 
 
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname,'public', '404.html'));
-});
-
-app.use( apiRoutes);
-console.log(apiRoutes, 'APIROUTES');
-
-//create server and listen to it on PORT
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 }); 
