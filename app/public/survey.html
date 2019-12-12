@@ -10,54 +10,7 @@
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styleSurvey.css">
-        <style>
-            .modal {
-                display: none;
-                /* Hidden by default */
-                position: fixed;
-                /* Stay in place */
-                z-index: 1;
-                /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%;
-                /* Full width */
-                height: 100%;
-                /* Full height */
-                overflow: auto;
-                /* Enable scroll if needed */
-                background-color: rgb(0, 0, 0);
-                /* Fallback color */
-                background-color: rgba(0, 0, 0, 0.4);
-                /* Black w/ opacity */
-            }
 
-            /* Modal Content/Box */
-            .modal-content {
-                background-color: #fefefe;
-                margin: 15% auto;
-                /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%;
-                /* Could be more or less, depending on screen size */
-            }
-
-            /* The Close Button */
-            .close {
-                color: #aaa;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            .close:hover,
-            .close:focus {
-                color: black;
-                text-decoration: none;
-                cursor: pointer;
-            }
-        </style>
     </head>
 
     <body>
@@ -317,32 +270,32 @@
 
         </main>
 
-        <div id="modal">
+        <!-- <div id="modal">
             <div class="modal-content">
                 <h4>It's a Friendly Match!</h4>
                 <div class="divider"></div>
                 <h5 id="userMatch"></h5>
                 <img id="userMatchImage" class="userMatch" width="100%" height="300px" src="">
-            </div>
+            </div> -->
 
             <script>
 
-                $(document).ready(function () {
-                    //MODAL-------------------------------------------------------------
-                    // Get the modal
-                    var modal = $("#modal");
-                    // When the user clicks the submit button, open the modal 
-                    $('#submitButton').onclick = function () {
-                        modal.style.display = "block";
-                    }
-                    // When the user clicks anywhere outside of the modal, close it
-                    window.onclick = function (event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
-                    //---------------------------------------------------------------
-                });
+                // $(document).ready(function () {
+                //     //MODAL-------------------------------------------------------------
+                //     // Get the modal
+                //     var modal = $("#modal");
+                //     // When the user clicks the submit button, open the modal 
+                //     $('#submitButton').onclick = function () {
+                //         modal.style.display = "block";
+                //     }
+                //     // When the user clicks anywhere outside of the modal, close it
+                //     window.onclick = function (event) {
+                //         if (event.target == modal) {
+                //             modal.style.display = "none";
+                //         }
+                //     }
+                //     //---------------------------------------------------------------
+                // });
 
                 // Activate submit button
                 $('#submitButton').on('click', function (event) {
@@ -364,10 +317,10 @@
                             $("input[type=radio][name=inlineRadioOptions10]:checked").val()
                         ]
                     };
+                    console.log("(on 'survey.html') USER name + scores: ", userInput);
 
                     //Request route and send some additional data along
-                    $.post('api/friends/', userInput)
-                        .done(function (data) {
+                    $.post('/apiRoutes/api/friends/', userInput, function(data) {
                             console.log(data);
                             //The jqXHR.done()(for success),takes a function argument.
                             // Set content: the name values of the friend that matches

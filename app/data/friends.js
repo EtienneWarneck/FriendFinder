@@ -1,4 +1,4 @@
-var friendsArray = [
+var friençdsArray = [
     {
         "name": "Woodie",
         "photo": "app/public/pokemon.png",
