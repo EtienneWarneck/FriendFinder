@@ -1,7 +1,7 @@
-var friençdsArray = [
+var friendsArray = [
     {
         "name": "Woodie",
-        "photo": "app/public/pokemon.png",
+        // "photo": "app/public/pokemon.png",
         "scores": [
             5,
             1,
@@ -17,7 +17,7 @@ var friençdsArray = [
     },
     {
         "name": "Shanice",
-        "photo": "",
+        // "photo": "",
         "scores": [
             2,
             5,
@@ -33,7 +33,7 @@ var friençdsArray = [
     },
     {
         "name": "Luna",
-        "photo": "",
+        // "photo": "",
         "scores": [
             2,
             1,
@@ -49,7 +49,7 @@ var friençdsArray = [
     },
     {
         "name": "Angel",
-        "photo": "",
+        // "photo": "",
         "scores": [
             1,
             5,

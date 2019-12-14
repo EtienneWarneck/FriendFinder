@@ -12,14 +12,15 @@ var PORT = 3000;
 //static is a middleware to serve static files such as images, CSS files, and JavaScript files.
 app.use(express.static(path.join(__dirname, 'app', 'public'))); 
 
-//importing 
-const htmlRoutes = require('./app/routing/htmlRoutes');  
-const apiRoutes = require('./app/routing/apiRoutes');  
-
 //app.use() is a middleware function.
 // urlencoded is a middleware parses incoming requests and is based on body-parser
 app.use(bodyparser.urlencoded({ extended: true })); //Before the handlers
 app.use(express.json());
+app.use(bodyparser.text());
+
+//importing 
+const htmlRoutes = require('./app/routing/htmlRoutes');  
+const apiRoutes = require('./app/routing/apiRoutes');  
 
 //app.METHOD(PATH, HANDLER)
 //METHOD use() is a function that allows to add a middleware function.
@@ -28,9 +29,10 @@ app.use(express.json());
 app.use('/', htmlRoutes); 
 app.use('/apiRoutes', apiRoutes); 
 
-var friendsArray = require('./app/data/friends.js');
-console.log("server.js IMAGE", friendsArray[0].photo); //image
+// var friends = require('./app/data/friends.js');
+// // console.log("server.js IMAGE", friendsArray[0].photo); //image
 
+// app.use('./api/friends', friends);
 
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
