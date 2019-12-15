@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-var data = require('../data/emptyfriends');
-var friends = data.friends;
+// var data = require('../data/emptyfriends');
+// var friends = data.friends;
 // console.log("ALL DATA FROM friends.js: ", friends); //OK  
 
 // A GET route used to display a JSON of all possible friends.
@@ -16,41 +16,41 @@ router.get('/api/friends', function (req, res, next) {
 
 // A POST route to handle incoming survey results. 
 // This route will also be used to handle the compatibility logic.
-router.post('/api/friends', function (req, res) {
-    console.log("apiRoutes.js POST user's survey:", req.body); //OK
-    // Capture the user input object
-    var userInput = req.body;
-    console.log(userInput);
-    var userAnswers = userInput.scores;
-    console.log(userAnswers);
+// router.post('/api/friends', function (req, res) {
+//     console.log("apiRoutes.js POST user's survey:", req.body); //OK
+//     // Capture the user input object
+//     var userInput = req.body;
+//     console.log(userInput);
+//     var userAnswers = userInput.scores;
+//     console.log(userAnswers);
+//     var friends=[]; 
+//     var matchName = '';
+//     // var matchImage = '';
 
-    var matchName = '';
-    // var matchImage = '';
+//     var totalDiff = 1000;
 
-    var totalDiff = 1000;
+//     for (var i = 0; i < friends.length; i++) { //for each of the 4 friends
 
-    for (var i = 0; i < friends.length; i++) { //for each of the 4 friends
+//         var diff = 0;
+//         for (var j = 0; j < userAnswers.length; j++) { //for each score's length 
+//             console.log('this'); // = 40
 
-        var diff = 0;
-        for (var j = 0; j < userAnswers.length; j++) { //for each score's length 
-            console.log('this'); // = 40
-
-            diff += Math.abs(userAnswers[j] - friends[i].scores[j]);//Math.abs doesn't matter what order
-            console.log(diff); // Each diff btw user's score and 4 friends
-        }
-        if (diff < totalDiff) {
-            totalDiff = diff;
-            matchName = friends[i].name;
-            // matchImage = friends[i].photo;
-        }
-    }
-    friends.push(userInput);
+//             diff += Math.abs(userAnswers[j] - friends[i].scores[j]);//Math.abs doesn't matter what order
+//             console.log(diff); // Each diff btw user's score and 4 friends
+//         }
+//         if (diff < totalDiff) {
+//             totalDiff = diff;
+//             matchName = friends[i].name;
+//             // matchImage = friends[i].photo;
+//         }
+//     }
+//     friends.push(userInput);
 
 
-    // res.json({ status: 'OK', matchName: matchName, matchImage: matchImage });
-    res.json({ status: 'OK', matchName: matchName });
+//     // res.json({ status: 'OK', matchName: matchName, matchImage: matchImage });
+//     res.json({ status: 'OK', matchName: matchName });
 
-});
+// });
 
 
 module.exports = router;
