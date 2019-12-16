@@ -1,40 +1,8 @@
-var friençdsArray = [
+var friendsArray = [
     {
-        "name": "Woodie",
-        "photo": "app/public/pokemon.png",
-        "scores": [
-            5,
-            1,
-            4,
-            4,
-            5,
-            1,
-            2,
-            5,
-            4,
-            1
-        ],
-    },
-    {
-        "name": "Shanice",
-        "photo": "",
-        "scores": [
-            2,
-            5,
-            1,
-            4,
-            3,
-            2,
-            1,
-            5,
-            5,
-            3
-        ],
-    },
-    {
-        "name": "Luna",
-        "photo": "",
-        "scores": [
+        name: "Woodie",
+        image: "./images/friend01.jpg",
+        scores: [
             2,
             1,
             5,
@@ -48,21 +16,20 @@ var friençdsArray = [
         ],
     },
     {
-        "name": "Angel",
-        "photo": "",
-        "scores": [
-            1,
+        name: "Luna",
+        image: "./images/friend02.jpg",
+        scores: [
             5,
-            2,
-            4,
-            4,
             5,
-            1,
+            5,
+            5,
             5,
             4,
-            3
+            4,
+            5,
+            5,
+            4
         ],
     },
 ]
-
 module.exports = friendsArray;

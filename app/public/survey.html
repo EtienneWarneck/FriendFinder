@@ -4,12 +4,21 @@
 
     <head>
         <title>Survey</title>
+        <!-- Link to the jQuery Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Link to Google-->
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- Link to Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        <!-- Link to CSS -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styleSurvey.css">
+        <link rel="stylesheet" href="css/stylemodal.css">
 
     </head>
 
@@ -24,17 +33,21 @@
         </header>
 
         <main class="main">
-            <form action="/survey" method="POST"></form>
-            <h1>SURVEY</h1>
-            <div>
-                <h4><strong>About You</strong></h4>
-                <h5>Name (required):</h5>
-                <input type="text" id="userName" placeholder="Your Name Here">
-            </div>
-            <hr>
+            <form action="/survey" method="">
+                <div>
+                    <h1>SURVEY</h1>
+                    <h4><strong>About You</strong></h4>
+                    <h5>Name:</h5>
+                    <input type="text" id="userName" placeholder="Your Name Here">
+                </div>
+                <div>
+                    <h4><strong></strong></h4>
+                    <h5>Image:</h5>
+                    <input type="text" id="userName" placeholder="Your Image Here">
+                </div>
+                <hr>
 
-            <form name="form" action="">
-
+                <!-- Survey Questions -->
                 <div class="input-field col s12">
                     <h2>Question 1</h2>
                     <h5>Your mind is always buzzing with unexplored ideas and plans.</h5>
@@ -80,29 +93,25 @@
                 </div>
 
                 <div class="input-field col s12">
-                    <fieldset>
-                        <legend>
-                            <h2>Question 3</h2>
-                        </legend>
-                        <h5>You find it easy to stay relaxed and focused even when there is some pressure.</h5>
-                        <div id="question3" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
-                                value="1">
-                            <label class="form-check-label" for="inlineRadio1">1 (Strongly Disagree)</label>
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
-                                value="2">
-                            <label class="form-check-label" for="inlineRadio1">2</label>
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
-                                value="3">
-                            <label class="form-check-label" for="inlineRadio1">3</label>
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
-                                value="4">
-                            <label class="form-check-label" for="inlineRadio1">4</label>
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
-                                value="5">
-                            <label class="form-check-label" for="inlineRadio1">5 (Strongly Agree)</label>
-                        </div>
-                    </fieldset>
+                    <h2>Question 3</h2>
+                    <h5>You find it easy to stay relaxed and focused even when there is some pressure.</h5>
+                    <div id="question3" class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
+                            value="1">
+                        <label class="form-check-label" for="inlineRadio1">1 (Strongly Disagree)</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
+                            value="2">
+                        <label class="form-check-label" for="inlineRadio1">2</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
+                            value="3">
+                        <label class="form-check-label" for="inlineRadio1">3</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
+                            value="4">
+                        <label class="form-check-label" for="inlineRadio1">4</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio"
+                            value="5">
+                        <label class="form-check-label" for="inlineRadio1">5 (Strongly Agree)</label>
+                    </div>
                 </div>
 
                 <div class="input-field col s12">
@@ -262,75 +271,81 @@
                     </div>
                 </div>
 
+                <div class="button">
+                    <button class="btn" type="submit" name="action" id="submitButton">Submit</button>
+                </div>
             </form>
-
-            <div class="button">
-                <button class="btn" type="submit" name="action" id="submitButton">Submit</button>
-            </div>
-
         </main>
 
-        <!-- <div id="modal">
-            <div class="modal-content">
-                <h4>It's a Friendly Match!</h4>
-                <div class="divider"></div>
-                <h5 id="userMatch"></h5>
-                <img id="userMatchImage" class="userMatch" width="100%" height="300px" src="">
-            </div> -->
+        <!-- Modal -->
+        <div id="myModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <h5 id="match"></h5>
+                        <img id="match_img" class="materialboxed" width="200px" src="">
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>It's a match !!</strong> </p>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script> -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
-            <script>
+        <script type="text/javascript">
 
-                // $(document).ready(function () {
-                //     //MODAL-------------------------------------------------------------
-                //     // Get the modal
-                //     var modal = $("#modal");
-                //     // When the user clicks the submit button, open the modal 
-                //     $('#submitButton').onclick = function () {
-                //         modal.style.display = "block";
-                //     }
-                //     // When the user clicks anywhere outside of the modal, close it
-                //     window.onclick = function (event) {
-                //         if (event.target == modal) {
-                //             modal.style.display = "none";
-                //         }
-                //     }
-                //     //---------------------------------------------------------------
-                // });
+            $(function () {
+                //MODAL-------------------------------------------------------------
+                var modal = $('#myModal');
+                $('#myModal').modal('hide');
+            });
 
-                // Activate submit button
-                $('#submitButton').on('click', function (event) {
-                    event.preventDefault();
+            $('#submitButton').on('click', function (event) {
+                event.preventDefault();
 
-                    var userInput = {
-                        name: $('#userName').val(),
-                        // photo: $('#userPhoto').val().trim(),
-                        scores: [
-                            $("input[type=radio][name=inlineRadioOptions1]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions2]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions3]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions4]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions5]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions6]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions7]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions8]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions9]:checked").val(),
-                            $("input[type=radio][name=inlineRadioOptions10]:checked").val()
-                        ]
-                    };
-                    console.log("(on 'survey.html') USER name + scores: ", userInput);
+                //gather user inputs
+                var userInput = {
+                    name: $('#userName').val(),
+                    photo: $('#userPhoto').val(),
+                    scores: [
+                        $("input[type=radio][name=inlineRadioOptions1]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions2]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions3]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions4]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions5]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions6]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions7]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions8]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions9]:checked").val(),
+                        $("input[type=radio][name=inlineRadioOptions10]:checked").val()
+                    ]
+                };
+                console.log("( page'survey.html') USER name + scores: ", userInput); //OK
 
-                    //Request route and send some additional data along
-                    $.post('/apiRoutes/api/friends/', userInput, function(data) {
-                            console.log(data);
-                            //The jqXHR.done()(for success),takes a function argument.
-                            // Set content: the name values of the friend that matches
-                            // $('#userMatch').html(data.matchName);
-                            // $("#userMatchImage").attr("src", data.matchImage);
-                            // Pop open the modal dialog
-                            // $('#modal').modal('open');
-                        });
+                //Load data from the server using an HTTP POST request.
+                $.post('/api/friends', userInput, function (data) {
+                    console.log(data, "DATANAME");
+
+                    //Set name and image values of the matching friend
+                    $('#match').html(data.matchName);
+                    $("#match_img").attr("src", data.matchImage);
+                 
+                    //Open modal
+                    $('#myModal').modal('show');
+
                 });
-            </script>
+            });
+
+        </script>
     </body>
 
     </html>
