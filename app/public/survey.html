@@ -18,6 +18,7 @@
         <!-- Link to CSS -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styleSurvey.css">
+        <link rel="stylesheet" href="css/stylemodal.css">
 
     </head>
 
@@ -283,10 +284,10 @@
                     <div class="modal-header">
                         <h5 class="modal-title"></h5>
                         <h5 id="match"></h5>
-                        <img id="match_img1" class="materialboxed" heigth="400px" src="">
+                        <img id="match_img" class="materialboxed" width="200px" src="">
                     </div>
                     <div class="modal-body">
-                        <p><strong> Friendly match !!</strong> </p>
+                        <p><strong>It's a match !!</strong> </p>
                     </div>
                     <div class="modal-footer">
                     </div>
@@ -332,12 +333,12 @@
 
                 //Load data from the server using an HTTP POST request.
                 $.post('/api/friends', userInput, function (data) {
+                    console.log(data, "DATANAME");
 
                     //Set name and image values of the matching friend
                     $('#match').html(data.matchName);
-                    $("#match_img1").attr("src", data.matchImage);
+                    $("#match_img").attr("src", data.matchImage);
                  
-
                     //Open modal
                     $('#myModal').modal('show');
 

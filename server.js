@@ -46,11 +46,9 @@ app.post('/api/friends', function (req, res) {
   var totalDiff = 100;
 
   for (var i = 0; i < friends.length; i++) { //for each of the 4 friends
-
     var diff = 0;
     for (var j = 0; j < userAnswers.length; j++) { //for each score's length 
       // console.log('this'); // = 40
-
       diff += Math.abs(userAnswers[j] - friends[i].scores[j]);//Math.abs doesn't matter what order
       console.log(diff); // Each diff btw user's score and 4 friends
     }
@@ -63,7 +61,12 @@ app.post('/api/friends', function (req, res) {
   }
   friends.push(userInput);
 
-  res.json({ status: 'OK', matchName: matchName, matchImage: matchImage });
+  // res.json({ status: 'OK', matchName: matchName, matchImage: matchImage });
+  res.json({ 
+    status: 'OK',
+   matchName: matchName,
+    matchImage: matchImage
+   });
   // console.log(res);
 
 });
